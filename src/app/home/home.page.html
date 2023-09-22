@@ -1,20 +1,39 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="tertiary">
     <ion-title>
-      Blank
+      ArsToUsdBlue
     </ion-title>
+    <ion-button slot="end" fill="clear" color="light" shape="round">
+      <ion-icon name="share-social-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Calculadora de moneda</ion-card-title>
+      <ion-card-subtitle class="ion-text-center">Pasar de USD Blue a Peso o Viceversa</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <form [formGroup]="formulario">
+        <ion-item>
+          <ion-select label="Seleccione Moneda" placeholder="Unidad" formControlName="moneda">
+            <ion-select-option value="usdblue">USD Blue</ion-select-option>
+            <ion-select-option value="ars">ARS</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-input label="Monto $" type="number" formControlName="monto"></ion-input>
+        </ion-item>
+        <ion-item>
+          <label><b>Total: </b></label>
+          <label slot="end">{{ resultado }}</label>
+        </ion-item>
+      </form>
+    </ion-card-content>
+  
+    <ion-button fill="clear" expand="block" (click)="calcular()">Calcular</ion-button>
+  </ion-card>
 </ion-content>
