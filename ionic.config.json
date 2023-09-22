@@ -1,0 +1,7 @@
+{
+  "name": "ArstoUsdBLue",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
