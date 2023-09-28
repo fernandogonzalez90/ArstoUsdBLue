@@ -27,21 +27,23 @@
             <ion-card-title class="ion-text-center"
               >Pasar de una divisa a otra</ion-card-title
             >
-            <ion-card-subtitle class="ion-text-center">Precio del USB Oficial y Blue</ion-card-subtitle>
+            <ion-card-subtitle class="ion-text-center"
+              >Precio del USB Oficial y Blue</ion-card-subtitle
+            >
             <div class="ion-text-center ion-padding-top">
               <label>
                 <b>USD Blue</b>
-                <br>
+                <br />
                 compra ARS <b>${{ b_compra }}</b>
                 <br />
                 promedio ARS <b>${{ b_promedio }}</b>
                 <br />
                 venta ARS <b>${{ b_venta }}</b>
               </label>
-              <hr>
+              <hr />
               <label>
                 <b>USD Oficial</b>
-                <br>
+                <br />
                 compra ARS <b>${{ o_compra }}</b>
                 <br />
                 promedio ARS <b>${{ o_promedio }}</b>
@@ -59,7 +61,7 @@
                   placeholder="Unidad"
                   formControlName="moneda"
                 >
-                <ion-select-option value="usdoficial"
+                  <ion-select-option value="usdoficial"
                     >USD Oficial</ion-select-option
                   >
                   <ion-select-option value="usdblue"
@@ -70,10 +72,10 @@
               </ion-item>
               <ion-item>
                 <ion-input
+                  id="monto"
                   label="Monto:"
                   type="number"
                   formControlName="monto"
-                  (keyup.enter)="calcular()"
                 ></ion-input>
               </ion-item>
               <ion-item>
@@ -94,6 +96,9 @@
 
 <ion-footer>
   <ion-toolbar>
-    <p class="ion-text-center">Utiliza la API de <a href="https://bluelytics.com.ar"><b>bluelytics</b></a></p>
+    <p class="ion-text-center">
+      Utiliza la API de
+      <a href="https://bluelytics.com.ar"><b>bluelytics</b></a>
+    </p>
   </ion-toolbar>
 </ion-footer>
