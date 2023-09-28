@@ -19,6 +19,8 @@ export class HomePage {
 
   divisa: string = '';
 
+  label: string = 'Total ';
+
   datoApi: any;
   resultado: number = 0;
   
@@ -49,9 +51,17 @@ b_blue: any;
         this.o_promedio = this.datoApi.oficial.value_avg;
         this.o_compra = this.datoApi.oficial.value_buy;
         this.o_venta = this.datoApi.oficial.value_sell;
-        console.log(this.datoApi);
       });
 
+  }
+
+  filtrar(label: string, buscar:string){
+    const cadena= label.split(/\s+/);
+    const index = cadena.indexOf(buscar);
+    if(index !== -1){
+      cadena.splice(index, 1);
+    }
+    return cadena.join(' '); // Agregamos un return para que todas las rutas de acceso devuelvan un valor
   }
 
   calcular() {
@@ -62,17 +72,32 @@ b_blue: any;
 
     // Realiza el cálculo en función de los valores obtenidos
     if (monedaSeleccionada === 'usdblue') {
+      this.label = this.filtrar(this.label, 'USD:');
       // Realiza el cálculo para USD Blue a ARS
       // Usa el valor de montoIngresado para hacer el cálculo
+      if(this.label.indexOf('ARS') === -1){
+        this.label = this.label + ' ARS:';
+      }
       this.resultado = montoIngresado * this.datoApi.blue.value_avg; // Reemplaza TU_TASA_DE_CAMBIO con la tasa de cambio actual
-      console.log('resultado: ', this.resultado)
-      // this.formulario.patchValue({ resultado: resultado });
-    } else if (monedaSeleccionada === 'ars') {
+
+
+    }else if(monedaSeleccionada === 'usdoficial'){
+      this.label = this.filtrar(this.label, 'USD:');
+      if(this.label.indexOf('ARS') === -1){
+        this.label = this.label + ' ARS:';
+      }
+      this.resultado = montoIngresado * this.datoApi.oficial.value_avg; // Reemplaza TU_TASA_DE_CAMBIO con la tasa de cambio actual
+
+
+    }else if (monedaSeleccionada === 'ars') {
+      this.label = this.filtrar(this.label, 'ARS:');
+      if(this.label.indexOf('USD') === -1){
+        this.label = this.label + ' USD:';
+      }
       // Realiza el cálculo para ARS a USD Blue
       // Usa el valor de montoIngresado para hacer el cálculo
       this.resultado = montoIngresado / this.datoApi.blue.value_avg; // Reemplaza TU_TASA_DE_CAMBIO con la tasa de cambio actual
-      console.log('resultado: ', this.resultado)
-      // this.formulario.patchValue({ resultado: resultado });
+
     }
   }
 

@@ -59,6 +59,9 @@
                   placeholder="Unidad"
                   formControlName="moneda"
                 >
+                <ion-select-option value="usdoficial"
+                    >USD Oficial</ion-select-option
+                  >
                   <ion-select-option value="usdblue"
                     >USD Blue</ion-select-option
                   >
@@ -70,10 +73,11 @@
                   label="Monto:"
                   type="number"
                   formControlName="monto"
+                  (keyup.enter)="calcular()"
                 ></ion-input>
               </ion-item>
               <ion-item>
-                <label><b>Total:</b></label>
+                <label><b>{{ label }}</b></label>
                 <label slot="end">{{ resultado | number:'1.2-2' }}</label>
               </ion-item>
             </form>
@@ -87,3 +91,9 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <p class="ion-text-center">Utiliza la API de <a href="https://bluelytics.com.ar"><b>bluelytics</b></a></p>
+  </ion-toolbar>
+</ion-footer>
