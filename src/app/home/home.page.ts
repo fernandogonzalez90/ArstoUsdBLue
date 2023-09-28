@@ -7,9 +7,22 @@ import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  formulario: FormGroup;
+
+  b_promedio: number = 0;
+  b_compra: number = 0;
+  b_venta: number = 0;
+
+  o_promedio: number = 0;
+  o_compra: number = 0;
+  o_venta: number = 0;
+
+  divisa: string = '';
+
   datoApi: any;
   resultado: number = 0;
-  formulario: FormGroup;
+  
+b_blue: any;
 
   constructor(
     private formBuilder: FormBuilder
@@ -29,6 +42,13 @@ export class HomePage {
       .then(res => res.json())
       .then(data => {
         this.datoApi = data;
+        this.b_promedio = this.datoApi.blue.value_avg;
+        this.b_compra = this.datoApi.blue.value_buy;
+        this.b_venta = this.datoApi.blue.value_sell;
+
+        this.o_promedio = this.datoApi.oficial.value_avg;
+        this.o_compra = this.datoApi.oficial.value_buy;
+        this.o_venta = this.datoApi.oficial.value_sell;
         console.log(this.datoApi);
       });
 
@@ -37,6 +57,7 @@ export class HomePage {
   calcular() {
     // Obtiene los valores seleccionados por el usuario
     const monedaSeleccionada = this.formulario.value.moneda;
+    this.divisa = monedaSeleccionada;
     const montoIngresado = this.formulario.value.monto;
 
     // Realiza el cálculo en función de los valores obtenidos
