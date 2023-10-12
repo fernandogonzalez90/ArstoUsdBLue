@@ -28,37 +28,42 @@
               >Pasar de una divisa a otra</ion-card-title
             >
             <ion-card-subtitle class="ion-text-center"
-              >Precio del USB Oficial y Blue</ion-card-subtitle
+              >Precio del USD Oficial y Blue</ion-card-subtitle
             >
-            <div class="ion-text-center ion-padding-top">
-              <label>
-                <b>USD Blue</b>
-                <br />
-                compra ARS <b>${{ b_compra }}</b>
-                <br />
-                promedio ARS <b>${{ b_promedio }}</b>
-                <br />
-                venta ARS <b>${{ b_venta }}</b>
-              </label>
-              <hr />
-              <label>
-                <b>USD Oficial</b>
-                <br />
-                compra ARS <b>${{ o_compra }}</b>
-                <br />
-                promedio ARS <b>${{ o_promedio }}</b>
-                <br />
-                venta ARS <b>${{ o_venta }}</b>
-              </label>
-            </div>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <label>
+                    <b>USD Blue</b>
+                    <br />
+                    compra ARS <b>${{ b_compra }}</b>
+                    <br />
+                    promedio ARS <b>${{ b_promedio }}</b>
+                    <br />
+                    venta ARS <b>${{ b_venta }}</b>
+                  </label>
+                </ion-col>
+                <ion-col>
+                  <label>
+                    <b>USD Oficial</b>
+                    <br />
+                    compra ARS <b>${{ o_compra }}</b>
+                    <br />
+                    promedio ARS <b>${{ o_promedio }}</b>
+                    <br />
+                    venta ARS <b>${{ o_venta }}</b>
+                  </label>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            
           </ion-card-header>
 
           <ion-card-content>
             <form [formGroup]="formulario">
               <ion-item>
                 <ion-select
-                  label="Seleccione Moneda"
-                  placeholder="Unidad"
+                  placeholder="Seleccione Moneda"
                   formControlName="moneda"
                 >
                   <ion-select-option value="usdoficial"
@@ -72,11 +77,11 @@
               </ion-item>
               <ion-item>
                 <ion-input
-                  id="monto"
-                  label="Monto:"
-                  type="number"
-                  formControlName="monto"
-                ></ion-input>
+                id="monto"
+                label="Cantidad:"
+                type="number"
+                formControlName="monto"
+              ></ion-input>
               </ion-item>
               <ion-item>
                 <label><b>{{ label }}</b></label>
@@ -97,8 +102,10 @@
 <ion-footer>
   <ion-toolbar>
     <p class="ion-text-center">
+      Creado por <a href="devgonzalezf.netlify.app/"><b>DevGonzalezF</b></a>
+      |
       Utiliza la API de
-      <a href="https://bluelytics.com.ar"><b>bluelytics</b></a>
+      <a href="https://bluelytics.com.ar"><b>Bluelytics</b></a>
     </p>
   </ion-toolbar>
 </ion-footer>
